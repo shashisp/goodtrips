@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from profiles.models import UserProfile
+from utils import analyze_text
 
 
 class Place(models.Model):
@@ -26,6 +27,13 @@ class Feedback(models.Model):
 
 	def __unicode__(self):
 		return self.place.name
+
+	def save(self, *args, **kwargs):
+		if analyze_text(self.description) < 0:
+			self.is_postive = False
+		else:
+			self.is_postive = True
+		super(Feedback, self).save(*args, **kwargs)
 
 
 class WishList(models.Model):
