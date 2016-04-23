@@ -13,7 +13,7 @@ urlpatterns = [
     # Examples:
     # url(r'^$', 'goodtrips.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-
+	url(r'^insta/', 'places.views.instagram_photos'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/v1/api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api/v1/', include(router.urls)),
