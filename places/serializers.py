@@ -1,7 +1,7 @@
 from django.conf.urls import url, include
-from places.models import Place, Feedback
+from places.models import Place, Feedback, WishList
 from rest_framework import serializers
-
+from rest_framework import exceptions
 
 class PlaceSerializer(serializers.ModelSerializer):
     class Meta:
@@ -22,3 +22,18 @@ class FeedbackSerializer(serializers.ModelSerializer):
 
 	def create(self, validated_data):
 		return Feedback.objects.create(**validated_data)
+
+
+class WishlistSerializer(serializers.ModelSerializer):
+
+	class Meta:
+		model = WishList
+		fields = ('id', 'created_by', 'place')
+
+	def update(self, validated_data):
+		place = validated_data.get('place')[0]
+		created_by = validated_data.get('created_by')
+		if WishList.objects.filter(place=place, created_by=created_by).exists():
+			return self.context['request'].user.userprofile.wishlists.remove(place)
+		else:
+		 return self.context['request'].user.userprofile.wishlists.add(place)

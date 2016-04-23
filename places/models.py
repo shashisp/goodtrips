@@ -23,3 +23,11 @@ class Feedback(models.Model):
 
 	def __unicode__(self):
 		return self.place.name
+
+
+class WishList(models.Model):
+	created_by = models.ForeignKey(UserProfile, related_name='wishlists')
+	place = models.ManyToManyField(Place)
+
+	def __unicode__(self):
+		return self.created_by.user.first_name
