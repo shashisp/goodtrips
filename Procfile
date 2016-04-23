@@ -1,0 +1,1 @@
+web: gunicorn goodtrips.wsgi --log-file -
