@@ -8,3 +8,8 @@ def analyze_text(text):
 	res = requests.post(new_url)
 	return res.json()['aggregate']['score']
 
+
+def querytext_index(text):
+	url = 'https://api.havenondemand.com/1/api/sync/querytextindex/v1?text='+text+'&ignore_operators=false&promotion=false&total_results=false&apikey='+API_KEY
+	realted = requests.post(url)
+	return realted.json()
