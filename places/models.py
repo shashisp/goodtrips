@@ -22,4 +22,4 @@ class Feedback(models.Model):
 	given_by = models.ForeignKey(UserProfile)
 
 	def __unicode__(self):
-		return self.place.description
+		return self.place.name
