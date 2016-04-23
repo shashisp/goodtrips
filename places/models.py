@@ -16,7 +16,7 @@ class Place(models.Model):
 
 
 class Feedback(models.Model):
-	place = models.ForeignKey(Place)
+	place = models.ForeignKey(Place, related_name='places')
 	description = models.TextField()
 	is_postive = models.BooleanField(default=None)
 	given_by = models.ForeignKey(UserProfile)

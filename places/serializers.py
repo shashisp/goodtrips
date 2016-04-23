@@ -10,6 +10,9 @@ class PlaceSerializer(serializers.ModelSerializer):
 
 
 class FeedbackSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Feedback
-        fields = ('id', 'place', 'description', 'given_by', 'is_postive')
+	place_name = serializers.ReadOnlyField(source='place.name', read_only=True)
+	thumbnail = serializers.ReadOnlyField(source='place.thumbnail', read_only=True)
+
+	class Meta:
+		model = Feedback
+		fields = ('id', 'place_name', 'description', 'given_by', 'is_postive', 'thumbnail')
