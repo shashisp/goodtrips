@@ -14,9 +14,12 @@ class Place(models.Model):
 	def __unicode__(self):
 		return self.name
 
+	def get_all_feedbacks(self):
+		return self.feedbacks.all().values('description', 'given_by__profile_pic', 'given_by__user__first_name')
+
 
 class Feedback(models.Model):
-	place = models.ForeignKey(Place, related_name='places')
+	place = models.ForeignKey(Place, related_name='feedbacks')
 	description = models.TextField()
 	is_postive = models.BooleanField(default=None)
 	given_by = models.ForeignKey(UserProfile)

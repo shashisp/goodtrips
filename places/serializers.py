@@ -4,9 +4,11 @@ from rest_framework import serializers
 from rest_framework import exceptions
 
 class PlaceSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Place
-        fields = ('id', 'name', 'latitiude', 'longitude', 'description', 'thumbnail')
+	feedbacks = serializers.CharField(source='get_all_feedbacks', read_only=True)
+
+	class Meta:
+		model = Place
+		fields = ('id', 'name', 'latitiude', 'longitude', 'description', 'thumbnail', 'feedbacks')
 
 
 class FeedbackSerializer(serializers.ModelSerializer):
