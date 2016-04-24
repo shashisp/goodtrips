@@ -29,6 +29,7 @@ class Feedback(models.Model):
 	description = models.TextField()
 	is_postive = models.BooleanField(default=None)
 	given_by = models.ForeignKey(UserProfile)
+	created_at = models.DateTimeField(auto_now_add=True, null=True)
 
 	def __unicode__(self):
 		return self.place.name
