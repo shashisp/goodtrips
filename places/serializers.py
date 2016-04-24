@@ -20,7 +20,7 @@ class FeedbackSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Feedback
 		fields = ('id', 'place_name', 'description', 'user', 'is_postive', 'thumbnail', 'user_picture',
-			      'place', 'given_by')
+			      'place', 'given_by', 'created_at')
 
 	def create(self, validated_data):
 		return Feedback.objects.create(**validated_data)
