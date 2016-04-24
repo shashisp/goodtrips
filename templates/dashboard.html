@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row">
+	<div class="col-lg-4 col-md-4 col-xs-4">
+	</div>
+	<div class="col-lg-4 col-md-4 col-xs-4">
+		<img src="{{ request.user.userprofile.profile_pic }}" id="rcorners2">
+		<h2>{{ request.user.first_name }} {{ request.user.last_name }}</h2>
+	</div>
+	<div class="col-lg-4 col-md-4 col-xs-4">
+		<!-- <a class="btn btn-lg btn-success" href="/campaign/create_new/">+Add new</a> -->
+	</div>
+</div>
+<div class="row">
+<div class="col-md-4">
+</div>
+<div class="col-md-4">
+	<p><a href="#">12 Followers</a> | <a href="#">2 Following</a></p>
+</div>
+<div class="col-md-4">
+</div>
+
+</div>
+
+<div class="row">
+	<h3>Campaigns list</h3>
+</div>
+<style type="text/css">
+#rcorners2 {
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+    padding: 20px; 
+    width: 200px;
+    height: 150px;    
+}
+</style>
+{% endblock %}

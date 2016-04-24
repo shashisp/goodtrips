@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% for wish in wishlist %}
+<div class="row">
+	<div class="col-lg-4 col-md-4 col-xs-4">
+		<img src="{{ wish.place.thumbnail }}" style="width:80px;height:50px"> {{ wish.place.name }}
+	</div>
+</div>
+{% endfor %}
+{% endblock %}

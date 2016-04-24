@@ -40,4 +40,25 @@ def instagram_photos(request):
 	result = requests.get(final_url)
 	return Response(result.json())
 
+def dashboard(request):
+	return render(request, 'dashboard.html')
+
+def wishlist(request):
+	wishlists = WishList.objects.filter(created_by=request.user.userprofile)
+	context = {
+		'wishlists': wishlists
+	}
+	return render(request, 'wishlist.html', context)
+
+def stats(request, pk):
+	place = Place.objects.get(pk=pk)
+	wants_to_visit = WishList.objects.filter(place=place).count()
+	visted = Feedback.objects.filter(place=place).count()
+	feedbacks = Feedback.objects.filter(place=place).values('created_at')
+	context = {
+	  'wants_to_visit': wants_to_visit,
+	  'visted': visted,
+	  'feedbacks': feedbacks
+	}
+	return render(request, 'stats.html', context)
 

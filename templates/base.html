@@ -1,48 +1,128 @@
 <!doctype html>
-<html>
+<html lang="en" ng-app="RDash">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<title>goodTrips | Discover your next goodTrip</title>
-	
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
-	<link href="/static/css/styles.css" rel="stylesheet"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <title>goodTrips | Discover Your next Trip</title>
+  <!-- STYLES -->
+  <!-- build:css lib/css/main.min.css -->
+  <link rel="stylesheet" type="text/css" href="/static/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/static/bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="/static/bower_components/rdash-ui/dist/css/rdash.min.css">
+  <!-- endbuild -->
+  <!-- SCRIPTS -->
+  <!-- build:js lib/js/main.min.js -->
+  <script type="text/javascript" src="/static/bower_components/angular/angular.min.js"></script>
+  <script type="text/javascript" src="/static/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+  <script type="text/javascript" src="/static/bower_components/angular-cookies/angular-cookies.min.js"></script>
+  <script type="text/javascript" src="/static/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <!-- endbuild -->
+  <link rel="stylesheet" href="http://rdash.github.io/lib/css/main.min.css"/>
+  <!-- Custom Scripts -->
+
+  <!-- Custom Scripts -->
+  <script type="text/javascript" src="/static/js/main.js"></script>
 
 </head>
-<body>
+<body ng-controller="MasterCtrl">
+  <div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak>
 
-	
-
-	 <div class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <a href="/" class="navbar-brand">goodTrips</a>
-          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-        <div class="navbar-collapse collapse" id="navbar-main">
-
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="/submit">login</a></li>
-            <li><a href="/collections">signup</a></li>
-          </ul>
-
-        </div>
-      </div>
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+      <ul class="sidebar">
+        <li class="sidebar-main">
+          <a ng-click="toggleSidebar()">
+            goodTrip
+            <span class="menu-icon glyphicon glyphicon-transfer"></span>
+          </a>
+        </li>
+        <li class="sidebar-title"><span>NAVIGATION</span></li>
+        <li class="sidebar-list">
+          <a href="/dashboard">Dashboard<span class="menu-icon fa fa-table"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href="/wishlist">Wishlist<span class="menu-icon fa fa-tachometer"></span></a>
+        </li>
+        <li class="sidebar-list">
+          <a href="/feed">Feed<span class="menu-icon fa fa-table"></span></a>
+        </li>
+      </ul>
     </div>
+    <!-- End Sidebar -->
 
-	<div class="container">
-	      <!-- <div class="page-header" id="banner"> -->
-		        <div class="row">
-		          {% block content %}
-		          {% endblock %}
-		        </div>
-	       <!-- </div> -->
-      	
- 	 </div>	
+    <div id="content-wrapper">
+      <div class="page-content">
 
+        <!-- Header Bar -->
+        <div class="row header">
+          <div class="col-xs-12">
+            <div class="user pull-right">
+              <div class="item dropdown">
+                <a href="#" class="dropdown-toggle">
+                  <!-- <img src="img/avatar.jpg"> -->
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right">
+                  <li class="dropdown-header">
+                    Joe Bloggs
+                  </li>
+                  <li class="divider"></li>
+                  <li class="link">
+                    <a href="#">
+                      Profile
+                    </a>
+                  </li>
+                  <li class="link">
+                    <a href="#">
+                      Menu Item
+                    </a>
+                  </li>
+                  <li class="link">
+                    <a href="#">
+                      Menu Item
+                    </a>
+                  </li>
+                  <li class="divider"></li>
+                  <li class="link">
+                    <a href="#">
+                      Logout
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="item dropdown">
+               <a href="#" class="dropdown-toggle">
+                  <i class="fa fa-bell-o"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right">
+                  <li class="dropdown-header">
+                    Notifications
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                    <a href="#">Server Down!</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="meta">
+              <div class="page">
+                Dashboard
+              </div>
+              <div class="breadcrumb-links">
+                Home / Dashboard
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Header Bar -->
+
+        <!-- Main Content -->
+        {% block content %}
+        {% endblock %}
+
+      </div><!-- End Page Content -->
+    </div><!-- End Content Wrapper -->
+  </div><!-- End Page Wrapper -->
 </body>
 </html>
