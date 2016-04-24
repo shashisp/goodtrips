@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from profiles.models import UserProfile
-from utils import analyze_text
+from utils import analyze_text, querytext_index
 
 
 class Place(models.Model):
@@ -11,12 +11,17 @@ class Place(models.Model):
 	longitude = models.FloatField()
 	description = models.TextField()
 	thumbnail = models.URLField()
+	extra_data = models.TextField(blank=True)
 
 	def __unicode__(self):
 		return self.name
 
 	def get_all_feedbacks(self):
 		return self.feedbacks.all().values('description', 'given_by__profile_pic', 'given_by__user__first_name')
+
+	def save(self, *args, **kwargs):
+		self.extra_data = querytext_index(self.name)
+		super(Place, self).save(*args, **kwargs)
 
 
 class Feedback(models.Model):

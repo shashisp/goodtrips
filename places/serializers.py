@@ -8,7 +8,7 @@ class PlaceSerializer(serializers.ModelSerializer):
 
 	class Meta:
 		model = Place
-		fields = ('id', 'name', 'latitiude', 'longitude', 'description', 'thumbnail', 'feedbacks')
+		fields = ('id', 'name', 'latitiude', 'longitude', 'description', 'thumbnail', 'feedbacks', 'extra_data')
 
 
 class FeedbackSerializer(serializers.ModelSerializer):

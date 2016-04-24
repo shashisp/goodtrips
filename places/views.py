@@ -5,6 +5,7 @@ from rest_framework import viewsets
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 import requests
+from utils import querytext_index
 
 
 class PlaceViewSet(viewsets.ModelViewSet):
@@ -38,3 +39,5 @@ def instagram_photos(request):
 	final_url = 'https://api.instagram.com/v1/locations/'+location_id+'/media/recent?access_token='+access_token
 	result = requests.get(final_url)
 	return Response(result.json())
+
+
