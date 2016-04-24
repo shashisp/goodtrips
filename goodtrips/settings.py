@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'profiles',
     'places',
     'rest_framework',
+    'social.apps.django_app.default',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -131,3 +132,36 @@ STATICFILES_DIRS = [
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+AUTHENTICATION_BACKENDS = (
+    'social.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+AUTH_PROFILE_MODULE = 'campaigns.UserProfile'
+
+SOCIAL_AUTH_FACEBOOK_SCOPE = [
+ 'email',
+ 'user_friends',
+]
+
+SOCIAL_AUTH_PIPELINE = (
+    'social.pipeline.social_auth.social_details',
+    'social.pipeline.social_auth.social_uid',
+    'social.pipeline.social_auth.social_user',
+
+    # automatically associated if the email already matches a user account.
+    'social.pipeline.social_auth.associate_by_email',
+
+    'social.pipeline.user.get_username',
+    'social.pipeline.user.create_user',
+    'social.pipeline.social_auth.associate_user',
+    'social.pipeline.social_auth.load_extra_data',
+    'social.pipeline.user.user_details',
+    'profiles.models.social_auth_to_profile',
+)
+
+SOCIAL_AUTH_FACEBOOK_KEY = '253469925004860'
+SOCIAL_AUTH_FACEBOOK_SECRET = '1456ed5eadeeddcff36c9137be878e1c'
+
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/dashboard/'
+SOCIAL_AUTH_LOGIN_URL = '/'
