@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'profiles',
     'places',
     'rest_framework',
+    'rest_framework.authtoken',
     'social.apps.django_app.default',
 )
 
