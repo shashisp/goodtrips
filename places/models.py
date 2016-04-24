@@ -17,7 +17,7 @@ class Place(models.Model):
 		return self.name
 
 	def get_all_feedbacks(self):
-		return self.feedbacks.all().values('description', 'given_by__profile_pic', 'given_by__user__first_name')
+		return self.feedbacks.all().values('description', 'given_by__profile_pic', 'given_by__user__first_name', 'given_by', 'is_postive')
 
 	def save(self, *args, **kwargs):
 		self.extra_data = querytext_index(self.name)
