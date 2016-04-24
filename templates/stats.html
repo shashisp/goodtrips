@@ -12,6 +12,11 @@
 	</div>
 </div>
 <div class="row">
-	{{ feedbacks }}
+	<div>
+	<h2>timings</h2>
+	{% for feedback in feedbacks %}
+		<li>{{ feedback.created_at }}</li>
+	{% endfor %}
+	</div>
 </div>
 {% endblock %}
