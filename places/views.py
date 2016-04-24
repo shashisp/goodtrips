@@ -43,6 +43,10 @@ def instagram_photos(request):
 def dashboard(request):
 	return render(request, 'dashboard.html')
 
+
+def home(request):
+	return render(request, 'home.html')
+
 def wishlist(request):
 	wishlists = WishList.objects.filter(created_by=request.user.userprofile)
 	context = {

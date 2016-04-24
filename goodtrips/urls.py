@@ -12,7 +12,7 @@ router.register(r'wishlist', WishListViewSet)
 
 urlpatterns = [
     # Examples:
-    # url(r'^$', 'goodtrips.views.home', name='home'),
+    url(r'^$', 'places.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 	url(r'^insta/', 'places.views.instagram_photos'),
 	url(r'^dashboard/', 'places.views.dashboard'),
