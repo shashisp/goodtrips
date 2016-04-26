@@ -2,4 +2,4 @@
 
 Goodreads for Travel
 
-<img src="screenshot.png">
+<img src="https://raw.githubusercontent.com/shashisp/goodtrips/master/screenshot.png">
