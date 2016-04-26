@@ -40,6 +40,8 @@ def instagram_photos(request):
 	result = requests.get(final_url)
 	return Response(result.json())
 
+from django.contrib.auth.decorators import login_required
+@login_required
 def dashboard(request):
 	return render(request, 'dashboard.html')
 
